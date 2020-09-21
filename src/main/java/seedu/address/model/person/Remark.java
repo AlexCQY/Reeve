@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 public class Remark {
     public final String remark;
+    public static final String INVALID_REMARK_MESSAGE = "Invalid remark";
 
     public Remark(String remark) {
         requireNonNull(remark);
