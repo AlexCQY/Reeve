@@ -3,17 +3,17 @@ package seedu.address.model.person;
 import static java.util.Objects.requireNonNull;
 
 public class Remark {
-    public final String remark;
+    public final String value;
     public static final String INVALID_REMARK_MESSAGE = "Invalid remark";
 
-    public Remark(String remark) {
-        requireNonNull(remark);
-        this.remark = remark;
+    public Remark(String value) {
+        requireNonNull(value);
+        this.value = value;
     }
 
     @Override
     public String toString() {
-        return this.remark;
+        return this.value;
     }
 
     @Override
@@ -22,7 +22,7 @@ public class Remark {
             return true;
         } else if (obj instanceof Remark) {
             Remark rmk = (Remark) obj;
-            return this.remark.equals(rmk.remark);
+            return this.value.equals(rmk.value);
         } else {
             return false;
         }
@@ -30,6 +30,6 @@ public class Remark {
 
     @Override
     public int hashCode() {
-        return remark.hashCode();
+        return value.hashCode();
     }
 }

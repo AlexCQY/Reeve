@@ -56,7 +56,7 @@ class JsonAdaptedPerson {
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
-        remark = source.getRemark().remark;
+        remark = source.getRemark().value;
     }
 
     /**
@@ -102,7 +102,10 @@ class JsonAdaptedPerson {
         }
         final Address modelAddress = new Address(address);
 
-       final Remark modelRemark = new Remark("");
+        if (remark == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Remark.class.getSimpleName()));
+        }
+        final Remark modelRemark = new Remark(remark);
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
         return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags, modelRemark);
