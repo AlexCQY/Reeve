@@ -3,9 +3,13 @@ package seedu.address.model.person;
 import static java.util.Objects.requireNonNull;
 
 public class Remark {
-    public final String value;
     public static final String INVALID_REMARK_MESSAGE = "Invalid remark";
+    public final String value;
 
+    /**
+     * Constructor for a Remark
+     * * @param value the remark string
+     */
     public Remark(String value) {
         requireNonNull(value);
         this.value = value;
