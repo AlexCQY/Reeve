@@ -4,6 +4,9 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -146,6 +149,19 @@ public class ModelManager implements Model {
         return reeve.equals(other.reeve)
                 && userPrefs.equals(other.userPrefs)
                 && filteredStudents.equals(other.filteredStudents);
+    }
+
+    /**
+     * Makes a copy of the student list in reeve, sorts the copied list and replace the current student list with the
+     * sorted list
+     * @param comparator for the student objects, can be comparing based on fields that student has
+     */
+    @Override
+    public void sortStudentList(Comparator<? super Student> comparator) {
+        requireNonNull(comparator);
+        List<Student> lst = new ArrayList<>(reeve.getStudentList());
+        lst.sort(comparator);
+        reeve.setStudents(lst);
     }
 
 }
